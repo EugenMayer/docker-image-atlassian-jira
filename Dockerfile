@@ -22,7 +22,7 @@ ENV JIRA_USER=jira \
 ENV JAVA_HOME="$JIRA_INSTALL/jre"
 # splitted due to $JAVA_HOME
 ENV PATH=$PATH:$JAVA_HOME/bin \
- LANG=${LANG_LANGUAGE}_${LANG_COUNTRY}.UTF-8
+    LANG=${LANG_LANGUAGE}_${LANG_COUNTRY}.UTF-8
 
 COPY bin_atlassian ${JIRA_SCRIPTS}
 COPY bin/custom_scripts.sh /usr/local/bin/custom_scripts.sh
@@ -32,15 +32,15 @@ COPY bin/wait-for-it.sh /usr/local/bin/wait-for-it
 # basic layout
 RUN apt-get update \
     && apt-get install -y \
-      ca-certificates \
-      bash \
-      gzip \
-      curl \
-      tini \
-      wget \
-      xmlstarlet \
-      ttf-dejavu \
-      postgresql-client \
+    ca-certificates \
+    bash \
+    gzip \
+    curl \
+    tini \
+    wget \
+    xmlstarlet \
+    ttf-dejavu \
+    postgresql-client \
     && echo 'hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4' >> /etc/nsswitch.conf \
     && curl https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh -o /usr/bin/wait-for-it \
     # Install Jira
@@ -59,10 +59,10 @@ RUN wget -O /tmp/jira.bin ${DOWNLOAD_URL} \
 # must come after the install, which creates the group itself
 RUN export CONTAINER_USER=jira \
     && adduser --uid $CONTAINER_UID \
-            --gid $CONTAINER_GID \
-            --home /home/$CONTAINER_USER \
-            --shell /bin/bash \
-            $CONTAINER_USER
+    --gid $CONTAINER_GID \
+    --home /home/$CONTAINER_USER \
+    --shell /bin/bash \
+    $CONTAINER_USER
 
 # Install database drivers
 RUN  rm -f ${JIRA_INSTALL}/lib/mysql-connector-java*.jar \
@@ -90,8 +90,12 @@ RUN wget -O /home/${JIRA_USER}/SSLPoke.class https://confluence.atlassian.com/kb
 
 # Image Metadata
 LABEL com.atlassian.application.jira.version=$JIRA_PRODUCT-$JIRA_VERSION \
-      com.atlassian.application.jira.userid=$CONTAINER_UID \
-      com.atlassian.application.jira.groupid=$CONTAINER_GID 
+    com.atlassian.application.jira.userid=$CONTAINER_UID \
+    com.atlassian.application.jira.groupid=$CONTAINER_GID 
+
+# fix cache eviction issue by adding <Resources cacheMaxSize="90240" />
+# see https://stackoverflow.com/questions/26893297/tomcat-8-throwing-org-apache-catalina-webresources-cache-getresource-unable-to
+COPY tomcat/context.xml /opt/jira/conf/context.xml
 
 USER jira
 WORKDIR ${JIRA_HOME}
