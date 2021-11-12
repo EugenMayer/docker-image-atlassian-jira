@@ -1,8 +1,8 @@
-version: "3"
+version: '3'
 
 services:
   jira:
-    image: eugenmayer/jira
+    image: ghcr.io/eugenmayer/jira
     container_name: jira
     ports:
       - '80:8080'
@@ -17,7 +17,7 @@ services:
       JIRA_DB_HOST: db
       JIRA_DB_PORT: 5432
   db:
-    image: mysql:5.7
+    image: mariadb:10.3
     environment:
       - 'MYSQL_ROOT_PASSWORD=verybigsecretrootpassword'
       - 'MYSQL_DATABASE=jiradb'

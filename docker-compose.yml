@@ -2,13 +2,13 @@ version: '2'
 
 services:
   jira:
-    image: eugenmayer/jira:en-${JIRA_VERSION}
+    image: ghcr.io/eugenmayer/jira:${JIRA_VERSION}
     depends_on:
       - db
-#    build:
-#      context: ./
-#      args:
-#        JIRA_VERSION: ${JIRA_VERSION}
+    #    build:
+    #      context: ./
+    #      args:
+    #        JIRA_VERSION: ${JIRA_VERSION}
     container_name: jirasoftware
     volumes:
       - jiradata:/var/atlassian/jira
@@ -40,7 +40,7 @@ services:
       - 'POSTGRES_COLLATE_TYPE=C'
 # uncomment this to run against mysql
 #  db:
-#    image: mysql:5.7
+#    image: mariadb:10.3
 #    hostname: mysql
 #    volumes:
 #      - mysqldata:/var/lib/mysql

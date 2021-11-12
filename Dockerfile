@@ -1,4 +1,5 @@
-FROM adoptopenjdk/openjdk11:debian
+FROM bellsoft/liberica-openjre-debian:11 
+LABEL org.opencontainers.image.source https://github.com/EugenMayer/docker-image-atlassian-jira
 
 ARG JIRA_VERSION=8.12.0
 ARG JIRA_PRODUCT=jira-software

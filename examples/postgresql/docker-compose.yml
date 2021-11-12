@@ -1,8 +1,8 @@
-version: "3"
+version: '3'
 
 services:
   jira:
-    image: eugenmayer/jira
+    image: ghcr.io/eugenmayer/jira
     container_name: jira
     ports:
       - '80:8080'
