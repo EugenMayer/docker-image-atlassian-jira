@@ -13,7 +13,7 @@ push-github:
 	source ./version && docker push ghcr.io/eugenmayer/jira:$${VERSION}
 
 push-hub:
-	docker push eugenmayer/traefik:2.x
+	docker push eugenmayer/jira
 	source ./version && docker push eugenmayer/jira:en-$${VERSION}
 	source ./version && docker push eugenmayer/jira:$${VERSION}
 
