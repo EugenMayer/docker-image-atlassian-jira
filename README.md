@@ -1,3 +1,8 @@
+# NOTICE
+
+Since we are no longer using this images to run confluence, only for development usage, we are not goint to update the image as often as we used to.
+If you like to udpate it more recent, please apply as contributor, we are happy to add you.
+
 # Docker image of Atlassian Jira
 
 Production ready, up to date builds of Atlassian Jira - right from the original binary download based on bellsoft-openjdk11
