@@ -1,6 +1,7 @@
 release: build tag-github push-github
-
 release-dockerhub: build tag-docker-hub push-hub
+
+release8: build8 tag-github push-github
 
 build:
 	docker pull bellsoft/liberica-openjre-debian:11

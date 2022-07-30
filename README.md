@@ -1,23 +1,23 @@
 # NOTICE
 
 Since we are no longer using this images to run confluence, only for development usage, we are not goint to update the image as often as we used to.
-If you like to udpate it more recent, please apply as contributor, we are happy to add you.
+If you like to update it more recent, please apply as contributor, we are happy to add you.
 
 # Docker image of Atlassian Jira
 
-Production ready, up to date builds of Atlassian Jira - right from the original binary download based on bellsoft-openjdk11
+Production ready, up-to-date builds of Atlassian Jira - right from the original binary download based on bellsoft-openjdk11
 
 - It should be compatible with Mysql 5.3+ and Postgresql 9.3+
 
 [![Docker Stars](https://img.shields.io/docker/stars/eugenmayer/jira.svg)](https://hub.docker.com/r/eugenmayer/jira/) [![Docker Pulls](https://img.shields.io/docker/pulls/eugenmayer/jira.svg)](https://hub.docker.com/r/eugenmayer/jira/)
 
-Please use the github image [ghcr.io/eugenmayer/jira](https://github.com/EugenMayer/docker-image-atlassian-jira/pkgs/container/jira), the docker-hub images are going to be deprecated long term.
+Please use the github image [ghcr.io/eugenmayer/jira](https://github.com/EugenMayer/docker-image-atlassian-jira/pkgs/container/jira), the docker-hub images are no longer update / deployed to be deprecated long term.
 
 ## Supported tags and respective Dockerfile links
 
-| Mirror     | Product            | Version           | Tags                                                       | Dockerfile                                                              |
-| ---------- | ------------------ | ----------------- | ---------------------------------------------------------- | ----------------------------------------------------------------------- |
-| github     | Jira Software - EN | 8.x(latest)       | [see tags](https://hub.docker.com/r/eugenmayer/jira/tags/) | [Dockerfile](https://github.com/eugenmayer/jira/blob/master/Dockerfile) |
+| Mirror     | Product            | Version          | Tags                                                       | Dockerfile                                                              |
+| ---------- | ------------------ |------------------| ---------------------------------------------------------- | ----------------------------------------------------------------------- |
+| github     | Jira Software - EN | 7.x-9.x(latest)  | [see tags](https://github.com/EugenMayer/docker-image-atlassian-jira/pkgs/container/jira) | [Dockerfile](https://github.com/eugenmayer/jira/blob/master/Dockerfile) |
 | hub.docker | Jira Software - EN | 7.0 - 8.x(latest) | [see tags](https://hub.docker.com/r/eugenmayer/jira/tags/) | [Dockerfile](https://github.com/eugenmayer/jira/blob/master/Dockerfile) |
 
 > On every release, the oldest and the newest tags are rebuild.
