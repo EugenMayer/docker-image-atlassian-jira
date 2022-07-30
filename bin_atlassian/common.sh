@@ -63,7 +63,7 @@ extract_database_url() {
       fi
       local host_port_name="$(read_var $prefix HOST):$(read_var $prefix PORT)/$(read_var $prefix NAME)"
       local jdbc_driver="org.postgresql.Driver"
-      local jdbc_url="jdbc:postgresql://$host_port_name"
+      local jdbc_url="jdbc:postgresql://$host_port_name?socketTimeout=240&tcpKeepAlive=true&$(read_var $prefix QUERY)"
       local hibernate_dialect="org.hibernate.dialect.PostgreSQLDialect"
       local database_type="postgres72"
       ;;

@@ -25,11 +25,6 @@ ENV JAVA_HOME="$JIRA_INSTALL/jre"
 ENV PATH=$PATH:$JAVA_HOME/bin \
     LANG=${LANG_LANGUAGE}_${LANG_COUNTRY}.UTF-8
 
-COPY bin_atlassian ${JIRA_SCRIPTS}
-COPY bin/custom_scripts.sh /usr/local/bin/custom_scripts.sh
-COPY bin/docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
-COPY bin/wait-for-it.sh /usr/local/bin/wait-for-it
-
 # basic layout
 RUN apt-get update \
     && apt-get install -y \
@@ -50,6 +45,12 @@ RUN apt-get update \
     # Add user
     && export CONTAINER_GROUP=jira \
     && addgroup --gid $CONTAINER_GID $CONTAINER_GROUP
+
+
+COPY bin_atlassian ${JIRA_SCRIPTS}
+COPY bin/custom_scripts.sh /usr/local/bin/custom_scripts.sh
+COPY bin/docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+COPY bin/wait-for-it.sh /usr/local/bin/wait-for-it
 
 # install jira
 RUN wget -O /tmp/jira.bin ${DOWNLOAD_URL} \
