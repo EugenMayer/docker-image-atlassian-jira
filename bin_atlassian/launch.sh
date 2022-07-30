@@ -30,6 +30,7 @@ if [ -n "$JIRA_DATABASE_URL" ]; then
   $SCHEMA
   <jdbc-datasource>
     <url>$JIRA_DB_JDBC_URL</url>
+    <connection-properties>$JIRA_DB_JDBC_CONNECTION_PROPERTIES</connection-properties>
     <driver-class>$JIRA_DB_JDBC_DRIVER</driver-class>
     <username>$JIRA_DB_USER</username>
     <password>$JIRA_DB_PASSWORD</password>

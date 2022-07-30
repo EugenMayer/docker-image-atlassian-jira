@@ -62,8 +62,9 @@ extract_database_url() {
         eval "${prefix}_PORT=5432"
       fi
       local host_port_name="$(read_var $prefix HOST):$(read_var $prefix PORT)/$(read_var $prefix NAME)"
+      local jdbc_connection_properties=$(read_var $prefix QUERY)
       local jdbc_driver="org.postgresql.Driver"
-      local jdbc_url="jdbc:postgresql://$host_port_name?socketTimeout=240&tcpKeepAlive=true&$(read_var $prefix QUERY)"
+      local jdbc_url="jdbc:postgresql://$host_port_name"
       local hibernate_dialect="org.hibernate.dialect.PostgreSQLDialect"
       local database_type="postgres72"
       ;;
@@ -89,6 +90,7 @@ extract_database_url() {
 
   eval "${prefix}_JDBC_DRIVER=\"$jdbc_driver\""
   eval "${prefix}_JDBC_URL=\"$jdbc_url\""
+  eval "${prefix}_JDBC_CONNECTION_PROPERTIES=\"$jdbc_connection_properties\""
   eval "${prefix}_DIALECT=\"$hibernate_dialect\""
   eval "${prefix}_TYPE=\"$database_type\""
 }
