@@ -32,7 +32,6 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: | 
-            ${{ env.IMAGE_FQDN }}:latest
             ${{ env.IMAGE_FQDN }}:${{ github.ref_name }}
           build-args: |
             JIRA_VERSION=${{ github.ref_name }}
