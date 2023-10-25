@@ -1,6 +1,6 @@
 # NOTICE
 
-Since we are no longer using this images to run confluence, only for development usage, we are not goint to update the image as often as we used to.
+Since we are no longer using this images to run jira, only for development usage, we are not goint to update the image as often as we used to.
 If you like to update it more recent, please apply as contributor, we are happy to add you.
 
 # Docker image of Atlassian Jira
