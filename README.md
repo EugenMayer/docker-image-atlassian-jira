@@ -1,6 +1,6 @@
 # NOTICE
 
-Since we are no longer using this images to run jira, only for development usage, we are not goint to update the image as often as we used to.
+Since we are no longer using this images to run jira in production - only for development usage - we are not goint to update the image as often as we used to.
 If you like to update it more recent, please apply as contributor, we are happy to add you.
 
 # Docker image of Atlassian Jira
@@ -26,7 +26,6 @@ Please use the github image [ghcr.io/eugenmayer/jira](https://github.com/EugenMa
 
 - [confluence](https://github.com/EugenMayer/docker-image-atlassian-confluence)
 - [bitbucket](https://github.com/EugenMayer/docker-image-atlassian-bitbucket)
-- [rancher catalog - corresponding catalog for jira](https://github.com/EugenMayer/docker-rancher-extra-catalogs/tree/master/templates/jira)
 - [development - running this image for development including a debugger](https://github.com/EugenMayer/docker-image-atlassian-jira/tree/master/examples/debug)
 
 # In short
