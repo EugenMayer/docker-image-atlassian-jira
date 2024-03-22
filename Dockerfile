@@ -17,8 +17,9 @@ ENV JIRA_USER=jira \
     JIRA_INSTALL=/opt/jira \
     JIRA_SCRIPTS=/usr/local/share/atlassian \
     MYSQL_DRIVER_VERSION=5.1.48 \
-    DOWNLOAD_URL=https://www.atlassian.com/software/jira/downloads/binary/atlassian-${JIRA_PRODUCT}-${JIRA_VERSION}-x64.bin
-
+    DOWNLOAD_URL=https://www.atlassian.com/software/jira/downloads/binary/atlassian-${JIRA_PRODUCT}-${JIRA_VERSION}-x64.bin \
+    CATALINA_OPTS='-Dupm.plugin.upload.enabled=true'
+    
 # needs to be seperated since we need to use JIRA_INSTALL and it would not be popuplated if merged in one ENV
 ENV JAVA_HOME="$JIRA_INSTALL/jre"
 # splitted due to $JAVA_HOME
