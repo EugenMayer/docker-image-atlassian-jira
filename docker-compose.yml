@@ -27,7 +27,7 @@ services:
       #- 'JIRA_DB_PORT=3306'
 
   db:
-    image: postgres:10
+    image: postgres:15.8
     hostname: postgresql
     volumes:
       - postgresqldata:/var/lib/postgresql/data
