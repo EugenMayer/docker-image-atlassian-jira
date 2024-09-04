@@ -1,7 +1,7 @@
-FROM bellsoft/liberica-openjre-debian:11 
-LABEL org.opencontainers.image.source https://github.com/EugenMayer/docker-image-atlassian-jira
+FROM bellsoft/liberica-openjre-debian:17
+LABEL org.opencontainers.image.source=https://github.com/EugenMayer/docker-image-atlassian-jira
 
-ARG JIRA_VERSION=8.12.0
+ARG JIRA_VERSION=10.0.0
 ARG JIRA_PRODUCT=jira-software
 # Permissions, set the linux user id and group id
 ARG CONTAINER_UID=1000
@@ -16,10 +16,10 @@ ENV JIRA_USER=jira \
     JIRA_HOME=/var/atlassian/jira \
     JIRA_INSTALL=/opt/jira \
     JIRA_SCRIPTS=/usr/local/share/atlassian \
-    MYSQL_DRIVER_VERSION=5.1.48 \
+    MYSQL_DRIVER_VERSION=9.0.0 \
     DOWNLOAD_URL=https://www.atlassian.com/software/jira/downloads/binary/atlassian-${JIRA_PRODUCT}-${JIRA_VERSION}-x64.bin \
     CATALINA_OPTS='-Dupm.plugin.upload.enabled=true'
-    
+
 # needs to be seperated since we need to use JIRA_INSTALL and it would not be popuplated if merged in one ENV
 ENV JAVA_HOME="$JIRA_INSTALL/jre"
 # splitted due to $JAVA_HOME
@@ -68,9 +68,9 @@ RUN export CONTAINER_USER=jira \
 
 # Install database drivers
 RUN  rm -f ${JIRA_INSTALL}/lib/mysql-connector-java*.jar \
-    && wget -O /tmp/mysql-connector-java-${MYSQL_DRIVER_VERSION}.tar.gz "http://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-${MYSQL_DRIVER_VERSION}.tar.gz" \
+    && wget -O /tmp/mysql-connector-java-${MYSQL_DRIVER_VERSION}.tar.gz "https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-j-${MYSQL_DRIVER_VERSION}.tar.gz" \
     && tar xzf /tmp/mysql-connector-java-${MYSQL_DRIVER_VERSION}.tar.gz --directory=/tmp \
-    && cp /tmp/mysql-connector-java-${MYSQL_DRIVER_VERSION}/mysql-connector-java-${MYSQL_DRIVER_VERSION}.jar ${JIRA_INSTALL}/lib/mysql-connector-java-${MYSQL_DRIVER_VERSION}.jar
+    && cp /tmp/mysql-connector-j-${MYSQL_DRIVER_VERSION}/mysql-connector-j-${MYSQL_DRIVER_VERSION}.jar ${JIRA_INSTALL}/lib/mysql-connector-java-${MYSQL_DRIVER_VERSION}.jar
 
 # Adding letsencrypt-ca to truststore # && \
 # Install atlassian ssl tool, which is mainly need to be able to create application links with other atlassian tools, which run LE SSL certificates
