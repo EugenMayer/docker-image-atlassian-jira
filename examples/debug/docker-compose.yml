@@ -13,7 +13,10 @@ services:
       - 'JIRA_DB_HOST=db'
       - 'JIRA_DB_PORT=5432'
       # debug ports
-      - 'JPDA_ADDRESS=5005'
+      # jira >= 10
+      - 'JPDA_ADDRESS=*:5005'
+      # for jira < 10
+      # - 'JPDA_ADDRESS=5005'
       - 'JPDA_TRANSPORT=dt_socket'
     volumes:
       - './start-jira.sh:/opt/jira/bin/start-jira.sh'
