@@ -1,4 +1,4 @@
-FROM bellsoft/liberica-openjre-debian:8
+FROM bellsoft/liberica-openjre-debian:11
 
 ARG JIRA_VERSION=7.6.17
 ARG JIRA_PRODUCT=jira-software
