@@ -1,11 +1,11 @@
-FROM bellsoft/liberica-openjre-debian:17
+FROM eclipse-temurin:21-noble
 LABEL org.opencontainers.image.source=https://github.com/EugenMayer/docker-image-atlassian-jira
 
-ARG JIRA_VERSION=10.0.0
+ARG JIRA_VERSION=11.0.0
 ARG JIRA_PRODUCT=jira-software
 # Permissions, set the linux user id and group id
-ARG CONTAINER_UID=1000
-ARG CONTAINER_GID=1000
+ARG CONTAINER_UID=1001
+ARG CONTAINER_GID=1001
 # Language Settings
 ARG LANG_LANGUAGE=en
 ARG LANG_COUNTRY=US

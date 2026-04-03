@@ -25,7 +25,7 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ github.token }}
       # push only on main
-      - name: Build and push
+      - name: Build and push Jira11
         uses: docker/build-push-action@v6
         with:
           context: .
@@ -36,7 +36,7 @@ jobs:
             ${{ env.IMAGE_FQDN }}:${{ github.ref_name }}
           build-args: |
             JIRA_VERSION=${{ github.ref_name }}
-      - name: Push
+      - name: Push Jira11
         uses: docker/build-push-action@v6
         if: startsWith(github.ref, 'refs/tags/')
         with:

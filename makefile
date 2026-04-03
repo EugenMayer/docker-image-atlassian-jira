@@ -1,7 +1,7 @@
-build:
+build10:
 	docker pull bellsoft/liberica-openjre-debian:17
-	docker build -t ghcr.io/eugenmayer/jira . --build-arg JIRA_VERSION=${VERSION}
+	docker build -t ghcr.io/eugenmayer/jira -f Dockerfile_17 --build-arg JIRA_VERSION=${VERSION} .
 
 build11:
-	docker pull bellsoft/liberica-openjre-debian:11
-	docker build -t ghcr.io/eugenmayer/jira:${VERSION} -f Dockerfile_java11 --build-arg JIRA_VERSION=${VERSION} .
+	docker pull eclipse-temurin:21-noble
+	docker build -t ghcr.io/eugenmayer/jira:${VERSION} -f Dockerfile --build-arg JIRA_VERSION=${VERSION} .
