@@ -99,6 +99,16 @@ LABEL com.atlassian.application.jira.version=$JIRA_PRODUCT-$JIRA_VERSION \
 # see https://stackoverflow.com/questions/26893297/tomcat-8-throwing-org-apache-catalina-webresources-cache-getresource-unable-to
 COPY tomcat/context.xml /opt/jira/conf/context.xml
 
+# patch upm so we can upload custom
+RUN mkdir -p /var/atlassian/jira/upmconfig/ && chown root:root /var/atlassian/jira/upmconfig
+COPY upm.properties /var/atlassian/jira/upmconfig/upm.properties
+RUN chmod u=r,g=r,o=r /var/atlassian/jira/upmconfig/upm.properties && chown root:root /var/atlassian/jira/upmconfig/upm.properties
+
+# add truststore
+RUN mkdir -p /var/atlassian/jira/upmconfig/truststore \
+  chown root:root /var/atlassian/jira/upmconfig/truststore \
+  chmod u=rx,g=rx,u=rx /var/atlassian/jira/upmconfig/truststore
+
 USER jira
 WORKDIR ${JIRA_HOME}
 VOLUME ["/var/atlassian/jira"]

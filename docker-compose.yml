@@ -1,5 +1,3 @@
-version: '2'
-
 services:
   jira:
     image: ghcr.io/eugenmayer/jira:${JIRA_VERSION}
@@ -27,7 +25,7 @@ services:
       #- 'JIRA_DB_PORT=3306'
 
   db:
-    image: postgres:15.8
+    image: postgres:16
     hostname: postgresql
     volumes:
       - postgresqldata:/var/lib/postgresql/data
@@ -38,23 +36,9 @@ services:
       - 'POSTGRES_ENCODING=UTF8'
       - 'POSTGRES_COLLATE=C'
       - 'POSTGRES_COLLATE_TYPE=C'
-# uncomment this to run against mysql
-#  db:
-#    image: mariadb:10.3
-#    hostname: mysql
-#    volumes:
-#      - mysqldata:/var/lib/mysql
-#    environment:
-#      - 'MYSQL_ROOT_PASSWORD=verybigsecretrootpassword'
-#      - 'MYSQL_DATABASE=jiradb'
-#      - 'MYSQL_USER=jira'
-#      - 'MYSQL_PASSWORD=jellyfish'
+
 volumes:
   jiradata:
     external: false
   postgresqldata:
-    external: false
-  mysqldata:
-    external: false
-  newdb:
     external: false
