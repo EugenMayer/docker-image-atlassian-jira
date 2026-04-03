@@ -3,7 +3,7 @@ name: build-and-push
 on:
   push:
     tags:
-      - '*'
+      - '10.*'
 
 env:
   IMAGE_FQDN: ghcr.io/eugenmayer/jira
@@ -26,12 +26,25 @@ jobs:
           password: ${{ github.token }}
       # push only on main
       - name: Build and push
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v6
         with:
           context: .
           platforms: linux/amd64
           push: true
+          file: Dockerfile_java17
           tags: | 
+            ${{ env.IMAGE_FQDN }}:${{ github.ref_name }}
+          build-args: |
+            JIRA_VERSION=${{ github.ref_name }}
+      - name: Push
+        uses: docker/build-push-action@v6
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          context: .
+          file: Dockerfile_java17
+          platforms: linux/amd64
+          push: true
+          tags: |
             ${{ env.IMAGE_FQDN }}:${{ github.ref_name }}
           build-args: |
             JIRA_VERSION=${{ github.ref_name }}
